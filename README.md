@@ -4,6 +4,7 @@ Input files for MDM2 alchemical side-chain mutation study.
 ___
 
 ## Repository Structure
+```
 └── datasets
     ├── FF14SB_TIP3P
     │   └── input_structures
@@ -55,6 +56,7 @@ ___
         └── NEQ
             ├── double_mutations
             └── single_mutations
+```
 
 Each individual mutation folder ([e.g V14G mutation with FF14SB-TIP3P forcefield](datasets/FF14SB_TIP3P/input_structures/am_open/v14g)) contains input coordinate (`mdm2_ions.gro`), input topology (`mdm2_ions.top`) and any input equilibration positional restraints (`posre.itp` or `posre_lig.itp`) used to carry out that specific perturbation. These are fully solvated systems with ions added and are ready to be used in simulation without further preparation.
 
