@@ -1,0 +1,73 @@
+;====================================================
+; NVT Equilibration Simulation
+;====================================================
+
+; PREPROCESSOR OPTIONS
+;----------------------------------------------------
+; NO RESTRAINTS
+;define      = -DPOSRES_LIG   ; restrain ligand if it's present in the simulation
+
+; RUN CONTROL
+;----------------------------------------------------
+integrator  = steep         ; Algorithm (steep = steepest descent minimization)
+emtol       = 10.0          ; Stop minimization when the maximum force < 10.0 kJ/mol/nm
+emstep      = 0.01          ; Minimization step size (nm)
+nsteps      = 50000         ; Maximum number of (minimization) steps to perform
+
+; OUTPUT CONTROL
+;----------------------------------------------------
+nstxout          = 0         ; do not save coordinates to .trr
+nstvout          = 0         ; do not save velocities to .trr
+nstfout          = 0         ; do not save forces to .trr
+nstxtcout        = 0         ; xtc compressed trajectory output every 1000 steps
+xtc-precision    = 1000      ; precision with which to write to the compressed trajectory file
+nstlog           = 1000      ; update log file every 1000 steps
+nstenergy        = 0         ; don't save energies
+nstcalcenergy    = 1000      ; calculate energies every 1000 steps (default=100)
+nstcomm          = 200       ; frequency for center of mass motion removal
+
+; BONDS
+;----------------------------------------------------
+constraints            = none
+
+; NEIGHBOR SEARCHING
+;----------------------------------------------------
+cutoff-scheme         = Verlet    ; group or Verlet
+ns-type               = grid      ; search neighboring grid cells
+pbc                   = xyz       ; 3D PBC
+
+; ELECTROSTATICS
+;----------------------------------------------------
+coulombtype            = PME
+coulomb-modifier       = Potential-shift
+pme-order              = 4
+fourierspacing         = 0.12
+ewald-rtol             = 1e-5
+
+; VDW
+;----------------------------------------------------
+vdw-type                = Cut-off
+vdw-modifier            = Potential-shift
+DispCorr                = EnerPres
+
+; TEMPERATURE COUPLING (Langevin)
+;----------------------------------------------------
+tcoupl            = no             ; no temperature coupling in em
+gen-vel           = no             ; Velocity generation (if gen-vel is 'yes', continuation should be 'no')
+
+; PRESSURE COUPLING
+;----------------------------------------------------
+pcoupl            = no             ; no pressure coupling in EM
+
+; FREE ENERGY CALCULATION
+;----------------------------------------------------
+free-energy              = yes
+init-lambda              = LAMBDA_STATE
+delta-lambda             = 0
+sc-alpha                 = 0.0    ; switch off soft-core potentials during EM/EQ phases
+sc-r-power           		 = 6
+sc-sigma                 = 0.3
+sc-coul                  = yes
+
+; Don't output any dH/dlambda gradients during EM
+nstdhdl                  = 0
