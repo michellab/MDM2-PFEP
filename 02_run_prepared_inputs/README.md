@@ -1,12 +1,12 @@
-# Prepared datasets
+# 02_run_prepared_inputs
 
 ## Installation instructions
 
-This paper utilized GROMACS `2023` version for running all simulations. You can find the source code and installation instructions for this version here [here](https://manual.gromacs.org/documentation/2023/download.html).
+This paper utilized GROMACS `2023` version for running all simulations. You can find the source code and installation instructions for this version here [here](https://manual.gromacs.org/documentation/2023/download.html), it is not provided as part of the docker image.
 
 ## Direrectory structure:
 ```
-└── prepared_datasets
+└── 02_run_prepared_inputs
     ├── FF14SB_TIP3P
     │   └── input_structures
     │       ├── am_open
@@ -95,7 +95,7 @@ cd v14g_repl_1/
 # and containing a script 'run_fep.sh' which can be used to reproduce the sequence in which the protocol was ran.
 ../template_v14g/mutagen.sh -l 11
 
-# For example
+# Run lambda_0 for example
 cd lambda_0
 ./run_fep.sh
 ```
@@ -118,6 +118,10 @@ cd t16g_i19g_repl_1/
 # This time we will pass -l 21 flag to the script in order to create a perturbation with 21 λ-windows. Same script as above can then
 # be used in order to reproduce this mutation
 ../template_t16g_i19g/mutagen.sh -l 21
+
+# Run lambda_0 for example
+cd lambda_0
+./run_fep.sh
 ```
 
 ### NEQ - Single Mutation
@@ -141,7 +145,7 @@ cd i19g_repl_1/
 # which can be used in order to reproduce this perturbation with NEQ protocol.
 ../template_i19g/mutagen.sh
 
-# For example
+# Run state A (lambda=0) for example
 ./run_state_a.sh
 ```
 
@@ -163,6 +167,6 @@ cd t16g_i19g_repl_1/
 # Once we call the script below, we can run the simulations as before
 ../template_t16g_i19g/mutagen.sh
 
-# For example
+# Run state A (lambda=0) for example
 ./run_state_a.sh
 ```
