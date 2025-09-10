@@ -67,6 +67,6 @@ ___
 ### Repository Structure
 
 The input files in this repository is split into 3 different parent folders:
-1. [01_prepare_inputs](01_input_preparation/) - documents how the raw protein and ligand input files were transformed into input simulation files.
+1. [01_prepare_inputs](01_prepare_inputs/) - documents how the raw protein and ligand input files were transformed into input simulation files.
 2. [02_run_prepared_inputs](02_run_prepared_inputs/) - documents how the prepared input files were taken, assembled, and ran via GROMACS.
 3. [03_analyse_simulations](03_analyse_simulations/) - documents how the simulation data was used to generate error statistics and plots.
