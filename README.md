@@ -26,10 +26,30 @@ The paper itself uses `2024.2` version of BioSimSpace for the perturbed molecule
 2. Pull the provided docker image: `docker pull akalpokas/biosimspace_2024.2:latest` (repository: https://hub.docker.com/r/akalpokas/biosimspace_2024.2)
 3. Interactively run the pulled image: `docker run -it akalpokas/biosimspace_2024.2:latest`
 
-You will be placed in the root directory and base conda environment. 
+You will be placed in the `/home/ubuntu/` directory and in the `openbiosim` conda environment. 
 
-4. You can access BioSimSpace by activating the `openbiosim` conda environment: `conda activate openbiosim`
 5. And finally run `ipython` and import BioSimSpace: `import BioSimSpace as BSS`
+
+#### Running provided Jupyter notebooks
+
+If you wish to interact with the Jupyter notebooks obtained from the this GitHub repository, mount the local GitHub repository as a volume in the docker container:
+```bash
+docker run -p 10000:8888 -it -v /absolute/path/to/git/directory/:/home/ubuntu/mdm2 akalpokas/biosimspace_2024.2:latest
+```
+
+> [!NOTE]
+> You can choose to change the port numbers on your machine if you have other services running on port `10000` for example.
+
+Now once inside the container, change the directory to the mounted volume `mdm2` and launch the jupyter lab server:
+```bash
+jupyter-lab --no-browser --port=8888 --ip=0.0.0.0 --NotebookApp.token='' --NotebookApp.password=''
+```
+
+Now you should be able to access the Jupyter lab server outside the docker container on your host machine:
+http://127.0.0.1:10000/lab
+or
+http://localhost:10000/lab
+
 
 #### Installing older version via conda
 
@@ -47,6 +67,6 @@ ___
 ### Repository Structure
 
 The input files in this repository is split into 3 different parent folders:
-1. [raw_inputs](raw_inputs/) - documents how the raw protein and ligand input files were transformed into input simulation files.
-2. [prepared_datasets](prepared_datasets/) - documents how the prepared input files were taken, assembled, and ran via GROMACS.
-3. [analysis](analysis/) - documents how the post-processed simulation data was used to generate error statistics and plots.
+1. [01_prepare_inputs](01_input_preparation/) - documents how the raw protein and ligand input files were transformed into input simulation files.
+2. [02_run_prepared_inputs](02_run_prepared_inputs/) - documents how the prepared input files were taken, assembled, and ran via GROMACS.
+3. [03_analyse_simulations](03_analyse_simulations/) - documents how the simulation data was used to generate error statistics and plots.
