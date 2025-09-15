@@ -5,6 +5,10 @@ This directory contains files and instructions for reproducing the parametrisati
 - [raw_proteins](raw_proteins/) wild-type and mutant MDM2 input structures used in generation of the GROMACS inputs
 - [raw_ligands](raw_ligands/) input structures and parameters of the Nutlin-3a and AM-7209 ligands (parametrised using [acpype](https://github.com/alanwilter/acpype)) used in generation of the GROMACS inputs.
 
+> [!NOTE]
+> If you intend to write files on your mounted docker volume, please make sure that repository file write permissions are enabled for the docker user. For example, a quick and dirty way to do this is to run: `chmod -R 777 MDM2-PFEP`, which will recursively enable all permissions for all users for this repository.
+
+
 ### FF99SB-ILDN_OPC example
 Run the shown cells in the [build_perturbable_gromacs_topologies.ipynb](build_perturbable_gromacs_topologies.ipynb) notebook to generate the GROMACS inputs. Then enter the output directory for this system and rename the created files (`mdm2_am_open_v14g.gro` and `mdm2_am_open_v14g.top`) to `mdm2.gro` and `mdm2.top` in order to be compatible with scripts. Copy the files from `output_systems/FF99SB-ILDN_OPC/solvate_opc/` to this directory and run `solvate_opc.sh` to solvate the system. Now you should have `mdm2_ions.gro` and `mdm2_ions.top` files in your directory. Copy the `am_ligand.gro` file from `raw_ligands` and now you can generate the restraints used for the equilibration.
 

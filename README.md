@@ -28,7 +28,7 @@ The paper itself uses `2024.2` version of BioSimSpace for the perturbed molecule
 
 You will be placed in the `/home/ubuntu/` directory and in the `openbiosim` conda environment. 
 
-5. And finally run `ipython` and import BioSimSpace: `import BioSimSpace as BSS`
+5. And finally run `python` and import BioSimSpace: `import BioSimSpace as BSS`
 
 #### Running provided Jupyter notebooks
 
@@ -59,7 +59,7 @@ http://localhost:10000/lab
 1. Install conda/miniconda/miniforge on your machine. For example miniforge is available here: https://github.com/conda-forge/miniforge
 2. Install the specific BioSimSpace version: `conda create -n openbiosim -c conda-forge -c openbiosim "biosimspace==2024.2.0"`
 3. Access BioSimSpace by activating the conda enviroment: `conda activate openbiosim`
-4. And run `ipython` and import BioSimSpace: `import BioSimSpace as BSS`
+4. And run `python` and import BioSimSpace: `import BioSimSpace as BSS`
 ___
 
 ## Input files

@@ -2,7 +2,7 @@
 
 ## Installation instructions
 
-This paper utilized GROMACS `2023` version for running all simulations. You can find the source code and installation instructions for this version here [here](https://manual.gromacs.org/documentation/2023/download.html), it is not provided as part of the docker image.
+This paper utilized GROMACS `2023` version for running all simulations. You can find the source code and installation instructions for this version here [here](https://manual.gromacs.org/documentation/2023/download.html), it is not provided as part of the docker image (which has 2025.3 version installed).
 
 ## Direrectory structure:
 ```
@@ -111,6 +111,9 @@ cp -r t16g_i19g template_t16g_i19g
 
 # This time we copy over the files needed for the double mutations
 cp ../../../parameter_files/EQ/double_mutations/* template_t16g_i19g/
+
+# For FF99SB*-ILDN-OPC simulations we also need the solvent parameter files
+../../solvent_parameters/opc.* template_t16g_i19g/
 
 mkdir t16g_i19g_repl_1
 cd t16g_i19g_repl_1/
